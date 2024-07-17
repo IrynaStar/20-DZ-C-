@@ -1,0 +1,134 @@
+using System;
+
+// Класс, содержащий именные данные студента
+public class PersonName
+{
+    public string FirstName { get; set; }
+    public string Surname { get; set; }
+    public string Lastname { get; set; }
+}
+
+// Класс, содержащий дату рождения студента
+public class DateOfBirth
+{
+    public DateTime BirthDate { get; set; }
+    public string ZnakZodiaka { get; set; }
+}
+
+// Класс, содержащий адрес студента
+public class Address
+{
+    public string Country { get; set; }
+    public string Region { get; set; }
+    public string City { get; set; }
+    public string Street { get; set; }
+    public int HouseNumber { get; set; }
+    public char Korpus { get; set; }
+    public int PostalCode { get; set; }
+}
+
+// Класс, содержащий информацию об образовании студента
+public class EducationDetails
+{
+    public DateTime StartDate { get; set; }
+    public int Kurs { get; set; }
+    public string GroupName { get; set; }
+    public string Specialization { get; set; }
+    public int StudentsCount { get; set; }
+}
+
+// Класс, содержащий информацию об успеваемости студента
+public class AcademicPerformance
+{
+    public string TeacherName { get; set; }
+    public string SubjectName { get; set; }
+    public int[] DzRates { get; set; }
+    public float DzAverageRate { get; set; }
+    public int[] PracticeRates { get; set; }
+    public float PracticeAverageRate { get; set; }
+    public int[] ExamRates { get; set; }
+    public float ExamAverageRate { get; set; }
+    public int[] ZachetRates { get; set; }
+    public int ZachetCount { get; set; }
+    public float ZachetAverageRate { get; set; }
+    public double TotalAverageRate { get; set; }
+}
+
+// Класс, содержащий информацию о посещении занятий студентом
+public class AttendanceInfo
+{
+    public int LessonsVisited { get; set; }
+    public int LessonsLate { get; set; }
+}
+
+// Основной класс, который содержит экземпляры всех остальных классов
+public class Student
+{
+    public PersonName PersonName { get; set; } = new PersonName();
+    public DateOfBirth DateOfBirth { get; set; } = new DateOfBirth();
+    public Address Address { get; set; } = new Address();
+    public EducationDetails EducationDetails { get; set; } = new EducationDetails();
+    public AcademicPerformance AcademicPerformance { get; set; } = new AcademicPerformance();
+    public AttendanceInfo AttendanceInfo { get; set; } = new AttendanceInfo();
+}
+
+class Program
+{
+    static void Main()
+    {
+        // Пример использования класса Student
+        var student = new Student
+        {
+            PersonName = new PersonName
+            {
+                FirstName = "Иван",
+                Surname = "Иванов",
+                Lastname = "Иванович"
+            },
+            DateOfBirth = new DateOfBirth
+            {
+                BirthDate = new DateTime(2000, 7, 15)
+            },
+            Address = new Address
+            {
+                Country = "Украина",
+                City = "Одесса",
+                Street = "Проспект Шевченка",
+                HouseNumber = 10,
+                Korpus = 'А',
+                PostalCode = 123456
+            },
+            EducationDetails = new EducationDetails
+            {
+                StartDate = new DateTime(2018, 9, 1),
+                Kurs = 3,
+                GroupName = "Группа 123",
+                Specialization = "Программирование",
+                StudentsCount = 30
+            },
+            AcademicPerformance = new AcademicPerformance
+            {
+                TeacherName = "Петрова А.С.",
+                SubjectName = "Математика",
+                DzRates = new int[] { 5, 4, 3, 5, 5 },
+                DzAverageRate = 4.4f,
+                PracticeRates = new int[] { 4, 5, 4, 3 },
+                PracticeAverageRate = 4.0f,
+                ExamRates = new int[] { 4, 5, 5, 5 },
+                ExamAverageRate = 4.75f,
+                ZachetRates = new int[] { 5, 5, 5, 5 },
+                ZachetCount = 4,
+                ZachetAverageRate = 5.0f,
+                TotalAverageRate = 4.5
+            },
+            AttendanceInfo = new AttendanceInfo
+            {
+                LessonsVisited = 50,
+                LessonsLate = 5
+            }
+        };
+
+        // Oбъект student для работы с информацией о студенте
+        Console.WriteLine($"Студент {student.PersonName.FirstName} {student.PersonName.Surname} проживает по адресу: {student.Address.Country}, {student.Address.City}, {student.Address.Street}.");
+    }
+}
